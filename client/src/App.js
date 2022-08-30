@@ -8,6 +8,7 @@ import { RiSearchLine, RiBookLine, RiUserLine, RiLogoutBoxLine, RiMenuLine } fro
 import { useDispatch, useSelector } from "react-redux";
 import { selectUser, newSession, logOut, handleUnauthorizedAction } from "./features/user/userSlice";
 import { pillPityPatterns } from "./utils/pillPityPatterns";
+import { pingAPI } from "./api/index";
 
 import PublicationsBrowser from "./components/PublicationsBrowser";
 import Shelf from "./components/Shelf";
@@ -23,6 +24,14 @@ function App() {
   const currentTabName = currentTab.substring(1, 2).toUpperCase() + currentTab.substring(2);
   const userFromLocal = JSON.parse(localStorage.getItem("userProfile"));
   const [showSideBar, setShowSideBar] = useState(true);
+
+  useEffect(() => {
+    try {
+      pingAPI();
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
     if (userFromLocal) {

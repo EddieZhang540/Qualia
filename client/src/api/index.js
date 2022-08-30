@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://qualia-library.herokuapp.com";
+const API_URL = "https://qualia.onrender.com";
 const API = axios.create({ baseURL: API_URL });
 
 // send user token for use in auth middleware
@@ -10,6 +10,8 @@ API.interceptors.request.use((req) => {
   }
   return req;
 });
+
+export const pingAPI = () => API.get(`/`);
 
 export const signUpAPI = (userData) => API.post(`/users/signUp`, userData);
 export const logInAPI = (userData) => API.post(`/users/logIn`, userData);
