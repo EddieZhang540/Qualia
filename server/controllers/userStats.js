@@ -118,7 +118,6 @@ export const updateUserStat = async (user_id, userBookData, deleteBook, changeSt
               (entryA, entryB) => entryB.frequency - entryA.frequency
             );
             userStatDoc.monthlySubjectDistribution.splice(monthlySubjectDistEntry, 1);
-            // console.log(JSON.stringify(userStatDoc.monthlySubjectDistribution[userStatDoc.monthlySubjectDistribution.length - 1]));
           } else {
             userStatDoc.monthlySubjectDistribution.push({
               month: userBookFinishedMonth,
@@ -184,7 +183,6 @@ export const updateUserStat = async (user_id, userBookData, deleteBook, changeSt
         userStatDoc.monthlySubjectDistributionCumulative = newMonthlySubjectDistribution;
       }
     }
-    console.log(userStatDoc);
 
     await UserStat.updateOne({ user_id }, userStatDoc);
   } catch (error) {

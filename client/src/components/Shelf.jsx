@@ -88,7 +88,6 @@ const Shelf = () => {
               parsedUserBookResults[getStatusIndex(book.readingStatus)].push(<UserBookCard key={book._id} book={book} />);
             }
           }
-          console.log(response);
         } catch (error) {
           console.log(error);
           toast({
@@ -148,7 +147,6 @@ const Shelf = () => {
               .slice(1, 3)
               .map((s) => `"${s}"`)
               .join(" OR ")})`;
-            console.log(subjectFilter);
           }
           books = await axios.get(`https://openlibrary.org/search.json?q=subject:(${subjectFilter})&page=1`);
         } else if (suggestMode === SUGGEST_BY_AUTHOR) {

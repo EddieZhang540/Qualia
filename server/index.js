@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
-import publicationReviewRoutes from "./routes/publicationReviews.js";
 import userRoutes from "./routes/users.js";
 import userBookRoutes from "./routes/userBooks.js";
 import userStatRoutes from "./routes/userStats.js";
@@ -28,7 +27,6 @@ mongoose
 app.get("/", (req, res) => {
   res.send("Qualia library API");
 });
-app.use("/publicationReviews", publicationReviewRoutes);
 app.use("/users", userRoutes);
 app.use("/userBooks", userBookRoutes);
 app.use("/userStats", userStatRoutes);
